@@ -1,0 +1,55 @@
+buildscript {
+    ext {
+        springBootVersion = '2.2.5.RELEASE'
+        springCloudVersion = '2.2.2.RELEASE'
+    }
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+	
+group 'br.com.dmtech.client'
+version '1.0.0-SNAPSHOT'
+
+sourceCompatibility = 1.11
+
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    compile("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}")
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.9'
+    compile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+    compile('org.projectlombok:lombok:0.11.0')
+    compile("org.springframework.cloud:spring-cloud-starter-openfeign:${springCloudVersion}")
+    compile("commons-beanutils:commons-beanutils:1.8.3")
+    
+    annotationProcessor "org.projectlombok:lombok:1.18.6"
+	testAnnotationProcessor "org.projectlombok:lombok:1.18.6"
+
+    compile('io.springfox:springfox-swagger2:2.9.2')
+    compile('io.springfox:springfox-swagger-ui:2.9.2')
+
+    compile group: 'org.flywaydb', name: 'flyway-core', version: '5.2.4'
+
+    runtime group: 'com.h2database', name: 'h2', version: '1.4.199'
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    
+	testCompile group: 'org.junit.platform', name: 'junit-platform-engine', version: '1.6.2'
+
+    
+    
+}
